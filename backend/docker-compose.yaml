@@ -1,0 +1,21 @@
+services:
+  postgresql:
+    container_name: postgresql
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    volumes:
+      - ./docker-volumes/postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - tsun
+
+networks:
+  tsun:
+    driver: bridge
+
+volumes:
+  docker-volumes:
